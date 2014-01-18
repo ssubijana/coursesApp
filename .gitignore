@@ -1,7 +1,6 @@
 /.metadata/
 /Servers/
 /RemoteSystemsTempFiles/
-
 *target*
 *.jar
 *.war
@@ -29,4 +28,6 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+
 

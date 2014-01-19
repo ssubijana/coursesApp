@@ -15,8 +15,7 @@ public class CourseController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView getCoursesList() {
- 
+	public ModelAndView getCoursesList() { 
 		ModelAndView model = new ModelAndView("list");
 		return model;
  

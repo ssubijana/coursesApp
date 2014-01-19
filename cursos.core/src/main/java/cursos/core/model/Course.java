@@ -1,39 +1,73 @@
 package cursos.core.model;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
 	
-	private int id;
+	private static final long serialVersionUID = -3563604377383689069L;
+
+	private Integer id;
 	private String title;
-	private int level;
-	private int hours;
-	private boolean active;	
+	private Integer level;
+	private Integer hours;
+	private Boolean active;
+	private Integer id_teacher;
 	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Course [id=");
+		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", level=");
+		builder.append(level);
+		builder.append(", hours=");
+		builder.append(hours);
+		builder.append(", active=");
+		builder.append(active);
+		builder.append(", id_teacher=");
+		builder.append(id_teacher);
+		builder.append("]");
+		return builder.toString();
+	}
+	/**
+	 * @param id
+	 * @param title
+	 */
+	public Course() {
+		super();
+	}
 	
 	/**
+	 * Constructor with param fields.
 	 * @param id
 	 * @param title
 	 * @param level
 	 * @param hours
 	 * @param active
+	 * @param id_teacher
 	 */
-	public Course(int id, String title, int level, int hours, boolean active) {
+	public Course(Integer id, String title, Integer level, Integer hours, Boolean active, Integer id_teacher) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.level = level;
 		this.hours = hours;
 		this.active = active;
+		this.id_teacher = id_teacher;
 	}
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
@@ -51,38 +85,50 @@ public class Course {
 	/**
 	 * @return the level
 	 */
-	public int getLevel() {
+	public Integer getLevel() {
 		return level;
 	}
 	/**
 	 * @param level the level to set
 	 */
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 	/**
 	 * @return the hours
 	 */
-	public int getHours() {
+	public Integer getHours() {
 		return hours;
 	}
 	/**
 	 * @param hours the hours to set
 	 */
-	public void setHours(int hours) {
+	public void setHours(Integer hours) {
 		this.hours = hours;
 	}
 	/**
 	 * @return the active
 	 */
-	public boolean isActive() {
+	public Boolean isActive() {
 		return active;
 	}
 	/**
 	 * @param active the active to set
 	 */
-	public void setActive(boolean active) {
+	public void setActive(Boolean active) {
 		this.active = active;
+	}
+	/**
+	 * @return the id_teacher
+	 */
+	public Integer getId_teacher() {
+		return id_teacher;
+	}
+	/**
+	 * @param id_teacher the id_teacher to set
+	 */
+	public void setId_teacher(Integer id_teacher) {
+		this.id_teacher = id_teacher;
 	}
 	
 	

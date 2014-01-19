@@ -1,6 +1,6 @@
 package cursos.core.service.test;
 
-import static org.junit.Assert.fail;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class InsertCourseTest {
 	@Test
 	public void is_course_initialized() {
 		String courseTitle = "Test title";
-		Course c = new Course(1, courseTitle, 1, 12,true);
+		Course c = new Course(1, courseTitle, 1, 12,true, 0);
 		Assert.notNull(c);
 		Assert.isTrue(c.getTitle().equals(courseTitle));
 	}
@@ -43,12 +43,24 @@ public class InsertCourseTest {
 	
 	@Test
 	public void is_course_inserted() {
-		fail("Not yet implemented");
+		String courseTitle = "Test title";
+		Course c = new Course(1, courseTitle, 1, 12,true, 1);
+		courseService.insertCourse(c);
+		Assert.isTrue(c.getId() > 0);
+		int deletedCourses = courseService.deleteCourse(c);
+		Assert.isTrue(deletedCourses > 0);
 	}
 	
 	@Test
-	public void exists_course() {
-		fail("Not yet implemented");
+	public void get_active_courses() {
+		String courseTitle1 = "Test title 1";
+		Course courseActive = new Course(1, courseTitle1, 1, 12,true, 1);		
+		courseService.insertCourse(courseActive);
+		Assert.isTrue(courseActive.getId() > 0);		
+		List<Course> activeCourses = courseService.getActiveCourses();
+		Assert.isTrue(activeCourses.size() > 0);		
+		int deletedCourses = courseService.deleteCourse(courseActive);
+		Assert.isTrue(deletedCourses > 0);
 	}
 
 }

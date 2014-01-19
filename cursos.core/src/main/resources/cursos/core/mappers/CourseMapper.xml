@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+  
+<mapper namespace='cursos.core.mappers.CourseMapper'>
+  
+   	<!-- Instead of referencing Fully Qualified Class Names we can register Aliases in mybatis-config.xml and use Alias names. -->
+   	<resultMap type='Course' id='CourseResult'>
+    	<id property='id' column='id'/>
+    	<result property='title' column='title'/>
+    	<result property='level' column='level'/>
+    	<result property='hours' column='hours'/>
+    	<result property='active' column='active'/>
+    	<result property='id_teacher' column='id_teacher'/>
+	</resultMap>
+	
+	<insert id='insertCourse' parameterType='Course' useGeneratedKeys='true' keyProperty='id'>
+	   INSERT INTO COURSE(title, level, hours, active, id_teacher)
+	    VALUES(#{title}, #{level}, #{hours}, #{active}, #{id_teacher})
+  	</insert>
+  	
+  	<delete id='deleteCourse' parameterType='int'>
+    	DELETE FROM COURSE WHERE id = #{id}
+	</delete>
+	
+	<select id='getCourse' resultType='cursos.core.model.Course' parameterType='int'>
+   		SELECT id, title, level, hours, active, id_teacher FROM COURSE WHERE ID = #{id}
+  	</select>
+	<select id='getActiveCourses' resultMap='CourseResult'>
+   		SELECT id, title, level, hours, active, id_teacher FROM COURSE
+  	</select>
+</mapper>

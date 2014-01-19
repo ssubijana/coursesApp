@@ -7,13 +7,13 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cursos.core.service.ProfesorService;
+import cursos.core.service.CourseService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/resources/testApplicationContext.xml"})
-public class ProfesorServiceTest {
+public class GetActiveCoursesTest {
 	
-	private ProfesorService profesorService;
+	private CourseService profesorService;
 
 	@Test
 	public void test() {

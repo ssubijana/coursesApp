@@ -1,5 +1,5 @@
 package cursos.core.model;
 
-public class Curso {
+public class Teacher {
 
 }

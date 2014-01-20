@@ -25,6 +25,11 @@ public interface CourseMapper {
 	 */
 	List<Course> getActiveCourses();
 	
+	/**
+	 * Gets a course by id.
+	 * @param id Identifier of the course to get.
+	 * @return Course recovered from database.
+	 */
 	Course getCourse(int id);
 
 }

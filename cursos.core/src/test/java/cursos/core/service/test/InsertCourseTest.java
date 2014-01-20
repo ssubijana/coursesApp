@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import cursos.core.exception.AppException;
 import cursos.core.model.Course;
 import cursos.core.service.CourseService;
 import cursos.core.service.MyBatisUtil;
@@ -42,7 +43,7 @@ public class InsertCourseTest {
 	}
 	
 	@Test
-	public void is_course_inserted() {
+	public void is_course_inserted() throws AppException {
 		String courseTitle = "Test title";
 		Course c = new Course(1, courseTitle, 1, 12,true, 1);
 		courseService.insertCourse(c);
@@ -52,7 +53,15 @@ public class InsertCourseTest {
 	}
 	
 	@Test
-	public void get_active_courses() {
+	public void is_valid_course() {
+		String courseTitle = "Test title";
+		Course c = new Course(1, courseTitle, 1, 12,true, 1);
+		boolean validCourse = courseService.isValidCourse(c);
+		Assert.isTrue(validCourse);
+	}
+	
+	@Test
+	public void get_active_courses() throws AppException {
 		String courseTitle1 = "Test title 1";
 		Course courseActive = new Course(1, courseTitle1, 1, 12,true, 1);		
 		courseService.insertCourse(courseActive);
@@ -61,6 +70,12 @@ public class InsertCourseTest {
 		Assert.isTrue(activeCourses.size() > 0);		
 		int deletedCourses = courseService.deleteCourse(courseActive);
 		Assert.isTrue(deletedCourses > 0);
+	}
+	
+	@Test(expected=AppException.class)
+	public void invalid_courses_not_inserted() throws AppException {
+		Course invalidCourse = new Course(1, null, null, null, null, null);
+		courseService.insertCourse(invalidCourse);
 	}
 
 }

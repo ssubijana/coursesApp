@@ -11,10 +11,13 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         
        	<bean class="cursos.core.dao.imp.CourseDAO" name="courseDAO" />
+       	<bean class="cursos.core.dao.imp.TeacherDAO" name="teacherDAO" />
        
         <bean class="cursos.core.service.CourseService" name="courseService">
         	<property name="courseDAO" ref="courseDAO"></property>
         </bean>
         
- 		<bean class="cursos.core.service.TeacherService" name="teacherService" />
+        <bean class="cursos.core.service.TeacherService" name="teacherService">
+        	<property name="teacherDAO" ref="teacherDAO"></property>
+        </bean>
 </beans>

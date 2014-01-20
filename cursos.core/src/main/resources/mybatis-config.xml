@@ -5,8 +5,9 @@
 <configuration>
  	<properties resource='jdbc.properties'/>
 	<typeAliases>
-		<!-- Mapeo de los pojos del modelo -->
+		<!-- Alias de los pojos del modelo (para no indicar referencia completa) -->
   		<typeAlias type='cursos.core.model.Course' alias='Course'></typeAlias>
+  		<typeAlias type='cursos.core.model.Teacher' alias='Teacher'></typeAlias>
  	</typeAliases>
  	<environments default='development'>
   		<environment id='development'>
@@ -20,6 +21,8 @@
   		</environment>
   	</environments>
   	<mappers>
+  		<!-- Mappers utilizados para registrar las operaciones y asociar registros de bd con pojos -->
  		<mapper resource='cursos/core/mappers/CourseMapper.xml'/>
+ 		<mapper resource='cursos/core/mappers/TeacherMapper.xml'/>
   	</mappers>
 </configuration>

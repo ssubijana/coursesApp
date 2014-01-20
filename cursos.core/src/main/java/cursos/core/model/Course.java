@@ -33,8 +33,7 @@ public class Course implements Serializable {
 		return builder.toString();
 	}
 	/**
-	 * @param id
-	 * @param title
+	 * Constructor by default.
 	 */
 	public Course() {
 		super();
@@ -42,12 +41,12 @@ public class Course implements Serializable {
 	
 	/**
 	 * Constructor with param fields.
-	 * @param id
-	 * @param title
-	 * @param level
-	 * @param hours
-	 * @param active
-	 * @param id_teacher
+	 * @param id Identifier of the course.
+	 * @param title Title of the course.
+	 * @param level Level of the course.
+	 * @param hours Hours of the course.
+	 * @param active If the course is active or not.
+	 * @param id_teacher Identifier of the teacher.
 	 */
 	public Course(Integer id, String title, Integer level, Integer hours, Boolean active, Integer id_teacher) {
 		super();

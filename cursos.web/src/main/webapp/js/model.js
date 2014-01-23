@@ -12,24 +12,30 @@ App.Course = DS.Model.extend({
   	idTeacher:  DS.attr('int')
 });
 
+App.Teacher = DS.Model.extend({
+    name:  DS.attr('string')
+});
+
+App.Level = DS.Model.extend({
+    id_level: DS.attr('int'),
+    description: DS.attr('string')
+});
+
 // FixtureAdapter for courses
-App.Course.FIXTURES = [{
-    id:1,
-    title: "Getting started with Ember JS",
-    level: "Intermediate",
-    hours: 15,
-    isActive: true,
-    isVisible: true,
-    idTeacher: 1
+App.Level.FIXTURES = [{
+  id: 1,
+  id_level: 1,
+  description: 'Basic'
 },
 {
-    id:2,
-    title: "Getting started with Spring MVC",
-    level: "Intermediate",
-    hours: 13,
-    isActive: true,
-    isVisible: true,
-    idTeacher: 1
+  id: 2,
+  id_level: 2,
+  description: 'Intermediate'
+},
+{
+  id: 3,
+  id_level: 3,
+  description: 'Advanced'
 }];
 
 App.Course.findAll =function(){

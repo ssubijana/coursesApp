@@ -63,10 +63,47 @@
 			{{/each}}			
 			</table>
         </div>
-        <ul id="paginator"></div>
-        <label {{action "displayNone" on="doubleClick"}}>Ocultar</label>    
+        <ul id="paginator"></div>        
+        <button type="button" class="btn btn-default">{{#link-to "new"}}New Course{{/link-to}}</button>    
       </div>
     </div>
+</script>
+
+<!-- Template add a course -->
+<script type="text/x-handlebars" data-template-name="new">
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="active" class="col-sm-2 control-label">Active</label>
+		    <div class="col-sm-10">
+				<div class="checkbox">
+					<label>
+				  		<input type="checkbox" id="active"> 
+				  	</label>
+			  	</div>	
+		  	</div>
+	  	</div>
+  		<div class="form-group">
+    		<label for="title" class="col-sm-2 control-label">Title</label>
+    		<div class="col-sm-10">
+    			<input type="text" class="form-control" id="title" placeholder="Insert the title of the course">
+    		</div>
+  		</div>
+  		<div class="form-group">
+  			<label class="col-sm-2 control-label">Level</label>
+  			<div class="col-sm-10">
+  				{{view Ember.Select
+      				contentBinding="controller.courseLevels"
+      				optionValuePath="content.id_level"
+      				optionLabelPath="content.description"
+      			class="input-medium"}}
+  			</div>
+  		</div>
+  		<div class="form-group">
+    		<div class="col-sm-offset-2 col-sm-10">
+  				<button type="submit" class="btn btn-default">Submit</button>
+  			</div>
+  		</div>
+	</form>
 </script>
 
 <script src="js/lib/jquery-1.10.2.js"></script>

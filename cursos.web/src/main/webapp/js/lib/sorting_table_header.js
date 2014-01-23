@@ -2,7 +2,7 @@
 App.SortingTableHeader = Ember.View.extend({
   tagName: 'th',
 
-  template: Ember.Handlebars.compile('{{view.text}} <span {{bindAttr class="view.icon"}}></span>'),
+  template: Ember.Handlebars.compile('{{view.text}} <span {{bind-attr class="view.icon"}}></span>'),
 
   classNames: ['pointerCursor'],
 

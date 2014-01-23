@@ -1,0 +1,18 @@
+[
+{
+    id:1,
+    title: "Getting started with Ember JS",
+    level: "Intermediate",
+    hours: 15,
+    isActive: true,
+    idTeacher: 1
+},
+{
+    id:2,
+    title: "Getting started with Spring MVC",
+    level: "Intermediate",
+    hours: 13,
+    isActive: true,
+    idTeacher: 1
+}
+]

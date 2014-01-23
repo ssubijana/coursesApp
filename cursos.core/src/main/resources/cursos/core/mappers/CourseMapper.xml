@@ -27,6 +27,6 @@
    		SELECT id, title, level, hours, active, id_teacher FROM COURSE WHERE ID = #{id}
   	</select>
 	<select id='getActiveCourses' resultMap='CourseResult'>
-   		SELECT id, title, level, hours, active, id_teacher FROM COURSE
+   		SELECT id, title, level, hours, active, id_teacher FROM COURSE WHERE ACTIVE = 1
   	</select>
 </mapper>

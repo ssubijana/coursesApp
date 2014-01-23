@@ -13,13 +13,9 @@ App.CoursesRoute = Ember.Route.extend({
 });
 
 App.NewRoute = Ember.Route.extend({
-    /*model: function() {
-        return this.store.find('level');
-    },
-    setupController:function(controller,model) {
-       //this._super(controller,model);
-       //controller.set('courseLevels',this.store.find('level'));
-    }*/
+    model: function() {
+        return {};
+      }
 });
 
 //Indicates the model which uses courses route

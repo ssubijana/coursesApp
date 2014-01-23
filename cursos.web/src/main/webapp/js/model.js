@@ -1,9 +1,7 @@
 App.Store = DS.Store.extend({
-  revision:13,
+  revision:12,
   adapter: 'DS.FixtureAdapter' //TODO: Load courses using ajax calling
 });
-
-App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 App.Course = DS.Model.extend({
   	title:  DS.attr('string'),
@@ -13,6 +11,8 @@ App.Course = DS.Model.extend({
   	isVisible:  DS.attr('boolean'),
   	idTeacher:  DS.attr('int')
 });
+
+App.Course.FIXTURES = [];
 
 App.Course.findAll =function(){
     var result = Ember.ArrayProxy.create({content: []});
@@ -32,7 +32,7 @@ App.Course.findAll =function(){
         }
         
       }, this);
-      App.config.maxPages = parseInt(numCourses/App.config.itemsPerPage, 10);
+      App.config.maxPages = Math.ceil(numCourses/App.config.itemsPerPage);//parseInt(numCourses/App.config.itemsPerPage, 10);
       var options = {
           currentPage: 1,
           totalPages: App.config.maxPages,

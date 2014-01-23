@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,7 @@ import cursos.core.model.Course;
 import cursos.core.model.Teacher;
 import cursos.core.service.CourseService;
 import cursos.core.service.TeacherService;
+import cursos.web.model.ResponseJSON;
 
 @Controller
 @RequestMapping(value = "/courses")
@@ -66,6 +68,21 @@ public class CourseController {
 			e.printStackTrace();
 		}
 		return teachers; 
+	}
+	
+	@RequestMapping(value="/add-course", method = RequestMethod.POST)
+	public @ResponseBody ResponseJSON addCourse(@RequestBody final Course course) {
+		ResponseJSON response = new ResponseJSON();
+		try {
+			courseService.insertCourse(course);
+			response.setData(course);
+			response.setSuccess(true);
+		} catch(AppException appEx) {
+			response.setSuccess(false);
+			response.setMessageError("The course couldn't be inserted");
+		}
+		return response;	
+		
 	}
 	
 

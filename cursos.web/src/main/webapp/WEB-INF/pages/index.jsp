@@ -63,14 +63,15 @@
 			{{/each}}			
 			</table>
         </div>
-        <ul id="paginator"></div>        
-        <button type="button" class="btn btn-default">{{#link-to "new"}}New Course{{/link-to}}</button>    
+        <ul id="paginator"></div>
+        {{#link-to "new" class="btn btn-default"}}New Course{{/link-to}}    
       </div>
     </div>
 </script>
 
 <!-- Template add a course -->
 <script type="text/x-handlebars" data-template-name="new">
+	<h2>Add new course</h2>
 	<form class="form-horizontal" role="form">
 		<div class="form-group">
 			<label for="active" class="col-sm-2 control-label">Active</label>
@@ -82,6 +83,17 @@
 			  	</div>	
 		  	</div>
 	  	</div>
+	  	<div class="form-group">
+  			<label for="teacherSelect" class="col-sm-2 control-label">Teacher</label>
+  			<div class="col-sm-10">
+  				{{view Ember.Select
+  					id = "teacherSelect"
+      				content=teachers
+       				optionValuePath="content.id"
+       				optionLabelPath="content.name"
+       				selection=selectedTeacher}}
+  			</div>
+  		</div>
   		<div class="form-group">
     		<label for="title" class="col-sm-2 control-label">Title</label>
     		<div class="col-sm-10">
@@ -89,18 +101,25 @@
     		</div>
   		</div>
   		<div class="form-group">
-  			<label class="col-sm-2 control-label">Level</label>
+  			<label for="levelSelect" class="col-sm-2 control-label">Level</label>
   			<div class="col-sm-10">
   				{{view Ember.Select
-      				contentBinding="controller.courseLevels"
-      				optionValuePath="content.id_level"
-      				optionLabelPath="content.description"
-      			class="input-medium"}}
+  					id = "levelSelect"
+      				content=courseLevels
+       				optionValuePath="content.id"
+       				optionLabelPath="content.description"
+       				selection=selectedLevel}}
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label for="hours" class="col-sm-2 control-label">Hours</label>
+  			<div class="col-sm-10">
+  				<input id="hours" type="number" min="1" max="120" step="1" value="10"/>
   			</div>
   		</div>
   		<div class="form-group">
     		<div class="col-sm-offset-2 col-sm-10">
-  				<button type="submit" class="btn btn-default">Submit</button>
+  				<button type="submit" class="btn btn-default">Add</button>
   			</div>
   		</div>
 	</form>

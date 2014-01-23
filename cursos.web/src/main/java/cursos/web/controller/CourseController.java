@@ -11,20 +11,32 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cursos.core.exception.AppException;
 import cursos.core.model.Course;
+import cursos.core.model.Teacher;
 import cursos.core.service.CourseService;
+import cursos.core.service.TeacherService;
 
 @Controller
 @RequestMapping(value = "/courses")
 public class CourseController {
 	
 	@Autowired
-	private CourseService courseService;	
+	private CourseService courseService;
+	
+	@Autowired
+	private TeacherService teacherService;	
 	
 	/**
 	 * @param courseService the courseService to set
 	 */
 	public void setCourseService(CourseService courseService) {
 		this.courseService = courseService;
+	}	
+
+	/**
+	 * @param teacherService the teacherService to set
+	 */
+	public void setTeacherService(TeacherService teacherService) {
+		this.teacherService = teacherService;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -43,5 +55,18 @@ public class CourseController {
 		}
 		return activeCourses; 
 	}
+	
+	@RequestMapping(value = "/get-teachers", method = RequestMethod.GET)
+	public @ResponseBody List<Teacher> getTeachersList() { 
+		List<Teacher> teachers = null;
+		try {
+			teachers = teacherService.getTeachers();
+		} catch (AppException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return teachers; 
+	}
+	
 
 }

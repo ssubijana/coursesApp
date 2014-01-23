@@ -26,9 +26,33 @@ App.CoursesController = Ember.ArrayController.extend({
 });
 
 
-/*App.NewController = Ember.ObjectController.extend({
-  needs: ['customers'],
-  courseLevels: function() {
-    return this.get('controllers.customers');
-  }.property(),
-});*/
+App.NewController = Ember.ObjectController.extend({
+  	selectedLevel : null,
+  	selectedTeacher : null,
+	courseLevels: [
+	{
+	  id: 1,
+	  description: 'Basic'
+	},
+	{
+	  id: 2,
+	  description: 'Intermediate'
+	},
+	{
+	  id: 3,
+	  description: 'Advanced'
+	}],
+	teachers: function() {
+        var teacherResp = [];
+        $.ajax({
+            type : "GET",
+            url : "courses/get-teachers",
+            success : function(response) {
+                response.forEach(function(teacher,index){
+                	teacherResp.pushObject(teacher);
+                });
+            }
+        });
+        return teacherResp;
+    }.property()
+});

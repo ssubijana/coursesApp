@@ -3,6 +3,7 @@ package cursos.core.service;
 import java.util.List;
 
 import cursos.core.dao.TeacherIDAO;
+import cursos.core.exception.AppException;
 import cursos.core.model.Teacher;
 
 public class TeacherService {
@@ -16,7 +17,7 @@ public class TeacherService {
 		this.teacherDAO = teacherDAO;
 	}
 	
-	public List<Teacher> getTeachers() {
+	public List<Teacher> getTeachers() throws AppException {
 		return teacherDAO.getTeachers();
 	}
 

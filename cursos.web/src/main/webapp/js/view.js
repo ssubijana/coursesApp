@@ -4,10 +4,6 @@ App.CoursesView = Ember.View.extend({
     }
 });
 
-function ocultaListado(){
-	$('.course').css('display','none');
-}
-
 function paginateCourses(newPage){
     //Launching action paginateCourses of the controller for showing courses of the selected page.
     var controller = App.__container__.lookup("controller:courses");

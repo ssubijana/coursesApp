@@ -2,7 +2,7 @@
 window.App = Ember.Application.create();
 
 App.config = {
-	'itemsPerPage' : 1,
+	'itemsPerPage' : 2,
 	'maxPages' : 0
 };
 

@@ -1,14 +1,10 @@
-App.CoursesController = Ember.ArrayController.extend({
-    displayNone: function(){
-    	console.log(this.content.length);
-    	this.setEach('isVisible', false);
-    },
-    initialize : function(){
-    	console.log(this.get('content'));
-
-    }.observes('content.isLoaded').on('init'),
+App.CoursesController = Ember.ArrayController.extend({    
     currentItem: 0,
     actions : {
+    	displayNone: function(){
+	    	this.set('sortProperties', ['level']);
+	    	this.set('sortAscending', true);
+	    },
 	    paginateCourses : function(page){
 	      var numItems = this.get('content').content.length;
 	      //var itemsPerPage = 1;
@@ -23,7 +19,6 @@ App.CoursesController = Ember.ArrayController.extend({
 	      	}
 	      	console.log(a); console.log(index)
 	      });
-	      //this.displayNone();
 	    }
   }
 

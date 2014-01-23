@@ -11,15 +11,17 @@
 <body>
 
 <script type="text/x-handlebars">
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="#">Course App</a>
-    <ul class="nav">
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#">App Course</a>
+	</div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">  
       <li>{{#linkTo 'courses'}}Course Catalogue{{/linkTo}}</li>
       <li>{{#linkTo 'about'}}About{{/linkTo}}</li>
     </ul>
   </div>
-</div>
+</nav>
 {{outlet}}  
 </script>
 
@@ -40,11 +42,11 @@
 			<table class="table table-bordered">
 			<thead>
 			  <tr>
-			  	<th>Title</th>
+			  	{{view App.SortingTableHeader property="title" text="Title"}}
 			  	<th>Level</th>
 			  	<th>Hours</th>
 			</thead>
-			{{#each model}}
+			{{#each this}}
 			<tr class="course">
 				{{#if isVisible}}
 				<td>
@@ -61,8 +63,8 @@
 			{{/each}}			
 			</table>
         </div>
-        <div id="paginator"></div>
-        
+        <ul id="paginator"></div>
+        <label {{action "displayNone" on="doubleClick"}}>Ocultar</label>    
       </div>
     </div>
 </script>
@@ -82,6 +84,7 @@
 <script src="js/model.js"></script>
 <script src="js/view.js"></script>
 <script src="js/controller.js"></script>
+<script src="js/lib/sorting_table_header.js"></script>
 
 </body>
 </html>

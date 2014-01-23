@@ -19,6 +19,7 @@ function setPaginator(currentPage) {
     var options = {
         currentPage: currentPage,
         totalPages: App.config.maxPages,
+        bootstrapMajorVersion: 3,
         onPageChanged: function(e,oldPage,newPage){
             paginateCourses(newPage);
         }

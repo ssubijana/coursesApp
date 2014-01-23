@@ -24,3 +24,11 @@ App.CoursesController = Ember.ArrayController.extend({
 
 
 });
+
+
+/*App.NewController = Ember.ObjectController.extend({
+  needs: ['customers'],
+  courseLevels: function() {
+    return this.get('controllers.customers');
+  }.property(),
+});*/

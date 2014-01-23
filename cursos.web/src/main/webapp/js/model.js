@@ -3,6 +3,8 @@ App.Store = DS.Store.extend({
   adapter: 'DS.FixtureAdapter' //TODO: Load courses using ajax calling
 });
 
+App.ApplicationAdapter = DS.FixtureAdapter.extend();
+
 App.Course = DS.Model.extend({
   	title:  DS.attr('string'),
   	level:  DS.attr('string'),

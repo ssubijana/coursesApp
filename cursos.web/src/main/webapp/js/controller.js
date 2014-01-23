@@ -55,11 +55,13 @@ App.NewController = Ember.Controller.extend({
             success : function(response) {
                 response.forEach(function(teacher,index){
                 	if (index == 0) {
-                		this.selectedTeacher = teacher;
+                		var controller = App.__container__.lookup("controller:new");
+    					controller.set('selectedTeacher',teacher);
                 	}
                 	teacherResp.pushObject(teacher);
                 });
-            }
+            },
+            
         });
         return teacherResp;
     }.property(),

@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import cursos.core.exception.AppException;
 import cursos.core.model.Teacher;
 import cursos.core.service.MyBatisUtil;
 import cursos.core.service.TeacherService;
@@ -49,7 +50,7 @@ public class GetTeachersTest {
 	}
 	
 	@Test
-	public void get_available_teachers() {
+	public void get_available_teachers() throws AppException{
 		List<Teacher> teachers = teacherService.getTeachers();
 		Assert.notNull(teachers);
 		Assert.notEmpty(teachers);

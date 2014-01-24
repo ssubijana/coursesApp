@@ -20,12 +20,7 @@ import cursos.core.service.MyBatisUtil;
 public class InsertCourseTest {
 
 	@Autowired
-	private CourseService courseService;
-	
-	
-	public void setCourseService(CourseService courseService) {
-		this.courseService = courseService;
-	}
+	private CourseService courseService;	
 
 	@Test
 	public void is_course_initialized() {

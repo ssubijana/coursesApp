@@ -22,14 +22,6 @@ public class GetTeachersTest {
 	@Autowired
 	private TeacherService teacherService;	
 
-	/**
-	 * @param teacherService the teacherService to set
-	 */
-	public void setTeacherService(TeacherService teacherService) {
-		this.teacherService = teacherService;
-	}
-
-
 
 	@Test
 	public void is_teacher_service_initialized() {

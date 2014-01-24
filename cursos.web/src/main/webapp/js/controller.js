@@ -18,7 +18,6 @@ App.CoursesController = Ember.ArrayController.extend({
 	      	} else {
 	      		a.set('isVisible', false);
 	      	}
-	      	console.log(a); console.log(index)
 	      });
 	    }
   	}
@@ -48,6 +47,7 @@ App.NewController = Ember.Controller.extend({
 	}],
 	teachers: function() {
         var teacherResp = [];
+        var controller = this;
         $.ajax({
             type : "GET",
             url : "courses/get-teachers",
@@ -55,7 +55,6 @@ App.NewController = Ember.Controller.extend({
             	if (typeof response !== 'undefined' && response != null && response.success) {
             		response.data.forEach(function(teacher,index){
 	                	if (index == 0) {
-	                		var controller = App.__container__.lookup("controller:new");
 	    					controller.set('selectedTeacher',teacher);
 	                	}
 	                	teacherResp.pushObject(teacher);
@@ -76,7 +75,7 @@ App.NewController = Ember.Controller.extend({
 		var messageErrors = "";
 		//Validating title : not null and not empty
 		if (this.courseTitle == null || this.courseTitle.length > 25) {
-			messageErrors = messageErrors.concat("Title must not be empty\n");
+			messageErrors = messageErrors.concat("Title must not be empty or having length greater than 25 chars.\n");
 		}
 		//Validating hours a numeric value
 		if (!$.isNumeric(this.courseHours)) {
@@ -102,6 +101,7 @@ App.NewController = Ember.Controller.extend({
   			'active' :  this.activeCourse,
   			'id_teacher' : this.selectedTeacher.id
   		};
+  		var controller = this;
 
   		$.ajax({ 
 		    url: "courses/add-course", 
@@ -112,7 +112,6 @@ App.NewController = Ember.Controller.extend({
 		    mimeType: 'application/json',
 		    success: function(data) { 
 		        if (typeof data !== 'undefined' && data != null && data.success) {
-		        	var controller = App.__container__.lookup("controller:new");
 	    			controller.transitionToRoute('courses');
 		        } else if (data !== 'undefined' && data != null && !data.success) {
 		        	alert(data.messageError);

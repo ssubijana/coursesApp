@@ -25,20 +25,6 @@ public class CourseController {
 	
 	@Autowired
 	private TeacherService teacherService;	
-	
-	/**
-	 * @param courseService the courseService to set
-	 */
-	public void setCourseService(CourseService courseService) {
-		this.courseService = courseService;
-	}	
-
-	/**
-	 * @param teacherService the teacherService to set
-	 */
-	public void setTeacherService(TeacherService teacherService) {
-		this.teacherService = teacherService;
-	}
 
 	/**
 	 * Redirects to show index page. 

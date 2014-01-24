@@ -1,3 +1,4 @@
+/*** Controller for showing the list of courses ***/
 App.CoursesController = Ember.ArrayController.extend({    
     currentItem: 0,
     actions : {
@@ -20,12 +21,10 @@ App.CoursesController = Ember.ArrayController.extend({
 	      	console.log(a); console.log(index)
 	      });
 	    }
-  }
-
-
+  	}
 });
 
-
+/*** Controller for adding a course ***/
 App.NewController = Ember.Controller.extend({
 	isValidForm : true,
 	messageErrors : null,
@@ -53,15 +52,23 @@ App.NewController = Ember.Controller.extend({
             type : "GET",
             url : "courses/get-teachers",
             success : function(response) {
-                response.forEach(function(teacher,index){
-                	if (index == 0) {
-                		var controller = App.__container__.lookup("controller:new");
-    					controller.set('selectedTeacher',teacher);
-                	}
-                	teacherResp.pushObject(teacher);
-                });
-            },
-            
+            	if (typeof response !== 'undefined' && response != null && response.success) {
+            		response.data.forEach(function(teacher,index){
+	                	if (index == 0) {
+	                		var controller = App.__container__.lookup("controller:new");
+	    					controller.set('selectedTeacher',teacher);
+	                	}
+	                	teacherResp.pushObject(teacher);
+	                });
+            	}
+            	else if (response !== 'undefined' && response != null && !response.success) {
+            		alert(response.messageError);
+            	}
+               
+            },            
+		    error:function(data,status,er) { 
+		        alert("An error has ocurred and data could not be recovered!");
+		    }
         });
         return teacherResp;
     }.property(),
@@ -104,15 +111,16 @@ App.NewController = Ember.Controller.extend({
 		    contentType: 'application/json',
 		    mimeType: 'application/json',
 		    success: function(data) { 
-		        if (data !== 'undefined' && data != null && data.success) {
-		        	this.transitionToRoute('courses');
+		        if (typeof data !== 'undefined' && data != null && data.success) {
+		        	var controller = App.__container__.lookup("controller:new");
+	    			controller.transitionToRoute('courses');
 		        } else if (data !== 'undefined' && data != null && !data.success) {
 		        	alert(data.messageError);
 		        }
 
 		    },
 		    error:function(data,status,er) { 
-		        alert("error:");
+		        alert("An error has ocurred and the operation could not be completed!");
 		    }
 		});
 

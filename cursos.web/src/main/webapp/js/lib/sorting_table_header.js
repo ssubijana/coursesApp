@@ -35,5 +35,6 @@ App.SortingTableHeader = Ember.View.extend({
     }
     sortableArray.set('sortProperties', Ember.makeArray(this.get('property'))); //sortProperties triggers the sort
     this.get("controller").send("paginateCourses",1);
+    setPaginator(App.config.currentPage);
   }
 });

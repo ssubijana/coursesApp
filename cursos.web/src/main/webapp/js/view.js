@@ -16,6 +16,7 @@ function setPaginator(currentPage) {
         }
     };
     $('#paginator').bootstrapPaginator(options);
+    App.config.currentPage = currentPage;
 }
 
 // Registers the function helper for getting the level description by id 

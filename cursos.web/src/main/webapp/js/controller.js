@@ -19,6 +19,8 @@ App.CoursesController = Ember.ArrayController.extend({
 	      		a.set('isVisible', false);
 	      	}
 	      });
+	      //Updating current page
+	      App.config.currentPage = page;
 	    }
   	}
 });
@@ -93,7 +95,7 @@ App.NewController = Ember.Controller.extend({
 		}
 		return null;
 	},	
-	addCourse : function() {
+	addCourse : function() { 
   		var courseJSON = {
   			'title': this.courseTitle,
   			'level' : this.selectedLevel.id,

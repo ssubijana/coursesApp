@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.util.Assert;
 
 import cursos.core.exception.AppException;
@@ -17,6 +18,7 @@ import cursos.core.service.MyBatisUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/testApplicationContext.xml"})
+@TransactionConfiguration(defaultRollback=true)
 public class InsertCourseTest {
 
 	@Autowired
@@ -38,7 +40,7 @@ public class InsertCourseTest {
 	}
 	
 	@Test
-	public void is_course_inserted() throws AppException {
+	public void isCourseInserted() throws AppException {
 		String courseTitle = "Test title";
 		Course c = new Course(1, courseTitle, 1, 12,true, 1);
 		courseService.insertCourse(c);
